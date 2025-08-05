@@ -1,0 +1,36 @@
+/* Tema Claro */
+.light-theme {
+  --primary-color: #9c27b0;
+  --secondary-color: #7b1fa2;
+  --background-color: #f5f5f5;
+  --text-color: #333;
+  --card-color: #ffffff;
+  --accent-color: #e91e63;
+}
+
+/* Tema Escuro (Padrão) */
+.dark-theme {
+  --primary-color: #7b1fa2;
+  --secondary-color: #4a148c;
+  --background-color: #121212;
+  --text-color: #f5f5f5;
+  --card-color: #1e1e1e;
+  --accent-color: #ff4081;
+}
+
+/* Tema Romântico */
+.romantic-theme {
+  --primary-color: #e91e63;
+  --secondary-color: #c2185b;
+  --background-color: #fff0f5;
+  --text-color: #880e4f;
+  --card-color: #ffebee;
+  --accent-color: #9c27b0;
+}
+
+/* Aplica o tema ao body */
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: all 0.3s ease;
+}

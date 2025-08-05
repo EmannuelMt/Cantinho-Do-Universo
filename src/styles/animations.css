@@ -1,0 +1,44 @@
+/* Entrada de páginas */
+.page-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 300ms ease-out;
+}
+
+/* Saída de páginas */
+.page-exit {
+  opacity: 1;
+}
+
+.page-exit-active {
+  opacity: 0;
+  transition: opacity 200ms ease-in;
+}
+
+/* Botões */
+.button-pop {
+  transition: transform 0.2s ease;
+}
+
+.button-pop:hover {
+  transform: scale(1.05);
+}
+
+.button-pop:active {
+  transform: scale(0.95);
+}
+
+/* Cards flutuantes */
+.floating-card {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}

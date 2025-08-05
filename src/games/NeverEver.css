@@ -1,0 +1,62 @@
+.never-ever-game {
+  text-align: center;
+  padding: 2rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.statement-card {
+  background: var(--card-color);
+  padding: 2rem;
+  border-radius: 15px;
+  margin: 2rem 0;
+  font-size: 1.2rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transform-origin: center;
+}
+
+.players {
+  display: flex;
+  justify-content: space-around;
+  margin: 2rem 0;
+}
+
+.player {
+  background: rgba(156, 39, 176, 0.1);
+  padding: 1.5rem;
+  border-radius: 10px;
+  width: 45%;
+}
+
+.player button {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 0.7rem 1.2rem;
+  border-radius: 5px;
+  margin-top: 1rem;
+  cursor: pointer;
+}
+
+.player button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.confession {
+  background: var(--accent-color);
+  color: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  margin-top: 1rem;
+}
+
+.confession button {
+  background: white;
+  color: var(--accent-color);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  margin-top: 1rem;
+  cursor: pointer;
+}
