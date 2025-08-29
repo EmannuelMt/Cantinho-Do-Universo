@@ -1,62 +1,371 @@
-.never-ever-game {
+:root {
+  /* Cores */
+  --white: #ffffff;
+  --white-soft: #f8f9fa;
+  --white-mute: #e9ecef;
+  --black: #212529;
+  --black-soft: #343a40;
+  --purple-500: #8a4fff;
+  --purple-400: #9d6aff;
+  --purple-300: #b18bff;
+  --purple-100: #e9ddff;
+  --pink-500: #ff4f8b;
+  --pink-400: #ff6b9d;
+  --pink-300: #ff88b0;
+  --pink-100: #ffdde9;
+  
+  /* Espaçamentos */
+  --spacing-xs: 8px;
+  --spacing-sm: 12px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  
+  /* Bordas */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  
+  /* Sombras */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  
+  /* Transições */
+  --transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.never-ever-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: var(--spacing-xl);
+  background-color: var(--white-soft);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Tela inicial */
+.start-screen {
+  background-color: var(--white);
+  padding: var(--spacing-xl);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
   text-align: center;
-  padding: 2rem;
   max-width: 600px;
-  margin: 0 auto;
+  width: 100%;
 }
 
-.statement-card {
-  background: var(--card-color);
-  padding: 2rem;
-  border-radius: 15px;
-  margin: 2rem 0;
-  font-size: 1.2rem;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  transform-origin: center;
+.game-title {
+  font-size: 2.5rem;
+  color: var(--purple-500);
+  margin-bottom: var(--spacing-md);
+  background: linear-gradient(45deg, var(--purple-500), var(--pink-500));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
-.players {
+.game-description {
+  font-size: 1.1rem;
+  color: var(--black-soft);
+  margin-bottom: var(--spacing-xl);
+  line-height: 1.6;
+}
+
+.start-button {
+  padding: var(--spacing-md) var(--spacing-xl);
+  background: linear-gradient(135deg, var(--purple-500), var(--pink-500));
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius-lg);
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+/* Tela do jogo */
+.game-screen {
+  background-color: var(--white);
+  padding: var(--spacing-xl);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  width: 100%;
+  max-width: 600px;
+}
+
+.score-board {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-xl);
+  padding: var(--spacing-md);
+  background-color: var(--purple-100);
+  border-radius: var(--radius-lg);
+}
+
+.player-score {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  flex: 1;
+}
+
+.player-score.leading {
+  background-color: var(--pink-100);
+}
+
+.player-score span:first-child {
+  font-weight: 600;
+  margin-bottom: var(--spacing-xs);
+}
+
+.player-score span:last-child {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--purple-500);
+}
+
+.vs-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  background-color: var(--purple-500);
+  color: var(--white);
+  border-radius: 50%;
+  font-weight: 700;
+  margin: 0 var(--spacing-md);
+}
+
+.question-card {
+  background-color: var(--white);
+  padding: var(--spacing-xl);
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--spacing-xl);
+  text-align: center;
+}
+
+.question-text {
+  font-size: 1.5rem;
+  color: var(--black);
+  margin-bottom: var(--spacing-xl);
+  line-height: 1.4;
+}
+
+.reveal-button {
+  padding: var(--spacing-md) var(--spacing-xl);
+  background: linear-gradient(135deg, var(--purple-400), var(--pink-400));
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.options-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.option-button {
+  padding: var(--spacing-md);
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  color: var(--white);
+}
+
+.option-button.player1 {
+  background-color: var(--purple-500);
+}
+
+.option-button.player2 {
+  background-color: var(--pink-500);
+}
+
+.option-button.neither {
+  background-color: var(--black-soft);
+}
+
+.progress-indicator {
+  text-align: center;
+  color: var(--black-soft);
+  font-size: 0.9rem;
+}
+
+/* Tela de resultados */
+.result-screen {
+  background-color: var(--white);
+  padding: var(--spacing-xl);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  width: 100%;
+  max-width: 600px;
+  text-align: center;
+}
+
+.result-title {
+  font-size: 2rem;
+  color: var(--purple-500);
+  margin-bottom: var(--spacing-xl);
+  background: linear-gradient(45deg, var(--purple-500), var(--pink-500));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.final-scores {
   display: flex;
   justify-content: space-around;
-  margin: 2rem 0;
+  margin-bottom: var(--spacing-xl);
 }
 
-.player {
-  background: rgba(156, 39, 176, 0.1);
-  padding: 1.5rem;
-  border-radius: 10px;
-  width: 45%;
+.final-score {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  flex: 1;
+  margin: 0 var(--spacing-md);
 }
 
-.player button {
-  background: var(--primary-color);
-  color: white;
+.final-score.player1 {
+  background-color: var(--purple-100);
+}
+
+.final-score.player2 {
+  background-color: var(--pink-100);
+}
+
+.final-score span:first-child {
+  font-weight: 600;
+  margin-bottom: var(--spacing-xs);
+}
+
+.score-number {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.final-score.player1 .score-number {
+  color: var(--purple-500);
+}
+
+.final-score.player2 .score-number {
+  color: var(--pink-500);
+}
+
+.result-message {
+  font-size: 1.2rem;
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--spacing-xl);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-md);
+}
+
+.result-message.winner {
+  background-color: var(--purple-100);
+  color: var(--purple-500);
+}
+
+.result-message.tie {
+  background-color: var(--pink-100);
+  color: var(--pink-500);
+}
+
+.action-buttons {
+  display: flex;
+  gap: var(--spacing-md);
+  justify-content: center;
+}
+
+.restart-button, .new-game-button {
+  padding: var(--spacing-md) var(--spacing-xl);
   border: none;
-  padding: 0.7rem 1.2rem;
-  border-radius: 5px;
-  margin-top: 1rem;
+  border-radius: var(--radius-md);
+  font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
 }
 
-.player button:disabled {
-  background: #ccc;
-  cursor: not-allowed;
+.restart-button {
+  background-color: var(--purple-500);
+  color: var(--white);
 }
 
-.confession {
-  background: var(--accent-color);
-  color: white;
-  padding: 1.5rem;
-  border-radius: 10px;
-  margin-top: 1rem;
+.new-game-button {
+  background-color: var(--pink-500);
+  color: var(--white);
 }
 
-.confession button {
-  background: white;
-  color: var(--accent-color);
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  margin-top: 1rem;
-  cursor: pointer;
+/* Animações */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .never-ever-container {
+    padding: var(--spacing-md);
+  }
+  
+  .game-title, .result-title {
+    font-size: 2rem;
+  }
+  
+  .question-text {
+    font-size: 1.3rem;
+  }
+  
+  .final-scores {
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+  
+  .action-buttons {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .game-title, .result-title {
+    font-size: 1.8rem;
+  }
+  
+  .question-text {
+    font-size: 1.1rem;
+  }
+  
+  .score-board {
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+  
+  .vs-circle {
+    margin: var(--spacing-md) 0;
+  }
 }

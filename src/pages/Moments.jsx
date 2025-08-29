@@ -22,6 +22,10 @@ const Moments = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('Todas');
   const [showUploadModal, setShowUploadModal] = useState(false);
+  const [showOptions, setShowOptions] = useState(false);
+  const [showCategories, setShowCategories] = useState(false);
+
+  
 
   const categories = ['Todas', 'Datas Especiais', 'Viagens', 'Dias Normais', 'Festas'];
 
@@ -48,49 +52,57 @@ const Moments = () => {
 
   return (
     <div className="moments-page">
-      <div className="moments-header">
-        <h1>Nossos Momentos</h1>
+      <header className="moments-header">
+        <h1 className="moments-title">Nossos Momentos</h1>
         
-        <div className="controls">
-          <div className="search-bar">
-            <FaSearch className="search-icon" />
-            <input
-              type="text"
-              placeholder="Buscar momentos..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
+        <div className="moments-controls">
+          <div className="search-container">
+            <div className="search-bar">
+              <FaSearch className="search-icon" />
+              <input
+                type="text"
+                placeholder="Buscar momentos..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="search-input"
+              />
+            </div>
+            
+            <motion.button
+              className="add-memory-btn"
+              onClick={() => setShowUploadModal(true)}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <FaPlus /> Adicionar Memória
+            </motion.button>
           </div>
           
           <div className="category-filter">
             {categories.map(category => (
-              <button
+              <motion.button
                 key={category}
-                className={selectedCategory === category ? 'active' : ''}
+                className={`category-btn ${selectedCategory === category ? 'active' : ''}`}
                 onClick={() => setSelectedCategory(category)}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
                 {category}
-              </button>
+              </motion.button>
             ))}
           </div>
         </div>
-      </div>
+      </header>
 
-      <motion.button
-        className="add-memory-btn"
-        onClick={() => setShowUploadModal(true)}
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-      >
-        <FaPlus /> Adicionar Memória
-      </motion.button>
+      <main className="moments-content">
+        <PhotoGallery 
+          photos={filteredPhotos} 
+          onPhotoClick={setSelectedPhoto}
+          onFavoriteToggle={toggleFavorite}
+        />
+      </main>
 
-      <PhotoGallery 
-        photos={filteredPhotos} 
-        onPhotoClick={setSelectedPhoto}
-        onFavoriteToggle={toggleFavorite}
-      />
-
+      {/* Modal de visualização de foto */}
       <AnimatePresence>
         {selectedPhoto && (
           <motion.div 
@@ -110,23 +122,30 @@ const Moments = () => {
               <button 
                 className="close-modal-btn"
                 onClick={() => setSelectedPhoto(null)}
+                aria-label="Fechar modal"
               >
                 <FaTimes />
               </button>
               
-              <img 
-                src={selectedPhoto.imageUrl} 
-                alt={selectedPhoto.title} 
-                className="modal-photo"
-              />
+              <div className="modal-photo-container">
+                <img 
+                  src={selectedPhoto.imageUrl} 
+                  alt={selectedPhoto.title} 
+                  className="modal-photo"
+                  loading="lazy"
+                />
+              </div>
               
               <div className="photo-details">
-                <h2>{selectedPhoto.title}</h2>
+                <div className="photo-meta">
+                  <h2 className="photo-title">{selectedPhoto.title}</h2>
+                  <span className="photo-category">{selectedPhoto.category}</span>
+                </div>
                 <p className="photo-date">{selectedPhoto.date}</p>
                 <p className="photo-description">{selectedPhoto.description}</p>
                 
                 <div className="photo-actions">
-                  <button 
+                  <motion.button 
                     className={`favorite-btn ${selectedPhoto.favorite ? 'active' : ''}`}
                     onClick={() => {
                       toggleFavorite(selectedPhoto.id);
@@ -135,9 +154,10 @@ const Moments = () => {
                         favorite: !selectedPhoto.favorite
                       });
                     }}
+                    whileTap={{ scale: 0.95 }}
                   >
                     <FaHeart /> {selectedPhoto.favorite ? 'Favoritado' : 'Favoritar'}
-                  </button>
+                  </motion.button>
                 </div>
               </div>
             </motion.div>
@@ -145,6 +165,7 @@ const Moments = () => {
         )}
       </AnimatePresence>
 
+      {/* Modal de upload */}
       <AnimatePresence>
         {showUploadModal && (
           <UploadModal 
@@ -157,7 +178,7 @@ const Moments = () => {
   );
 };
 
-// Componente auxiliar para upload
+// Componente de Upload Modal
 const UploadModal = ({ onClose, onUpload }) => {
   const [newPhoto, setNewPhoto] = useState({
     title: '',
@@ -187,46 +208,61 @@ const UploadModal = ({ onClose, onUpload }) => {
 
   return (
     <motion.div 
-      className="upload-modal-overlay"
+      className="modal-overlay"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       onClick={onClose}
     >
       <motion.div 
-        className="upload-modal-content"
+        className="modal-content"
         initial={{ y: 50 }}
         animate={{ y: 0 }}
         exit={{ y: 50 }}
         onClick={(e) => e.stopPropagation()}
       >
-        <h2>Adicionar Nova Memória</h2>
+        <div className="modal-header">
+          <h2 className="modal-title">Adicionar Nova Memória</h2>
+          <button 
+            className="close-btn"
+            onClick={onClose}
+            aria-label="Fechar modal"
+          >
+            <FaTimes />
+          </button>
+        </div>
         
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="upload-form">
           <div className="form-group">
-            <label>Título</label>
+            <label htmlFor="title">Título</label>
             <input
+              id="title"
               type="text"
               value={newPhoto.title}
               onChange={(e) => setNewPhoto({...newPhoto, title: e.target.value})}
               required
+              className="form-input"
             />
           </div>
           
           <div className="form-group">
-            <label>Descrição</label>
+            <label htmlFor="description">Descrição</label>
             <textarea
+              id="description"
               value={newPhoto.description}
               onChange={(e) => setNewPhoto({...newPhoto, description: e.target.value})}
               rows="3"
+              className="form-textarea"
             />
           </div>
           
           <div className="form-group">
-            <label>Categoria</label>
+            <label htmlFor="category">Categoria</label>
             <select
+              id="category"
               value={newPhoto.category}
               onChange={(e) => setNewPhoto({...newPhoto, category: e.target.value})}
+              className="form-select"
             >
               <option value="Datas Especiais">Datas Especiais</option>
               <option value="Viagens">Viagens</option>
@@ -236,29 +272,46 @@ const UploadModal = ({ onClose, onUpload }) => {
           </div>
           
           <div className="form-group">
-            <label>Foto</label>
-            <input
-              type="file"
-              accept="image/*"
-              onChange={handleFileChange}
-              required
-            />
-            {newPhoto.imageUrl && (
-              <img 
-                src={newPhoto.imageUrl} 
-                alt="Preview" 
-                className="image-preview"
+            <label htmlFor="photo-upload" className="file-upload-label">
+              <span>Selecionar Foto</span>
+              <input
+                id="photo-upload"
+                type="file"
+                accept="image/*"
+                onChange={handleFileChange}
+                required
+                className="file-input"
               />
+            </label>
+            {newPhoto.imageUrl && (
+              <div className="image-preview-container">
+                <img 
+                  src={newPhoto.imageUrl} 
+                  alt="Preview" 
+                  className="image-preview"
+                />
+              </div>
             )}
           </div>
           
           <div className="form-actions">
-            <button type="button" onClick={onClose}>
+            <motion.button 
+              type="button" 
+              onClick={onClose}
+              className="secondary-btn"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
               Cancelar
-            </button>
-            <button type="submit">
+            </motion.button>
+            <motion.button 
+              type="submit"
+              className="primary-btn"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
               Salvar Memória
-            </button>
+            </motion.button>
           </div>
         </form>
       </motion.div>
