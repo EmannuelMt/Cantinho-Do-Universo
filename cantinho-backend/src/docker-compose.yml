@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      - NODE_ENV=development
+      - MONGODB_URI=mongodb://mongo:27017/cantinho-universo
+      - JWT_SECRET=seu_jwt_secret_super_seguro_aqui
+    volumes:
+      - .:/app
+      - /app/node_modules
+    depends_on:
+      - mongo
+    command: npm run dev
+
+  mongo:
+    image: mongo:5
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    environment:
+      - MONGO_INITDB_DATABASE=cantinho-universo
+
+volumes:
+  mongo_data:

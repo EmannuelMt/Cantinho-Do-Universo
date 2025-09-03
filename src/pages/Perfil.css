@@ -1,0 +1,416 @@
+.perfil-header {
+  margin-bottom: 2rem;
+}
+
+.perfil-banner {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+}
+
+.banner-overlay {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 3rem 2rem;
+}
+
+.perfil-info {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  color: white;
+}
+
+.foto-perfil {
+  position: relative;
+}
+
+.foto-perfil img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  object-fit: cover;
+}
+
+.btn-edit-foto {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  background: #667eea;
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  cursor: pointer;
+}
+
+.perfil-detalhes h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.apelido {
+  opacity: 0.9;
+  margin-bottom: 1rem;
+}
+
+.bio {
+  font-style: italic;
+  margin-bottom: 1.5rem;
+  max-width: 400px;
+}
+
+.perfil-stats {
+  display: flex;
+  gap: 2rem;
+}
+
+.stat {
+  text-align: center;
+}
+
+.stat strong {
+  display: block;
+  font-size: 1.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.stat span {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+/* Navegação por abas */
+.abas-navegacao {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.aba-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 1.5rem;
+  background: none;
+  border: none;
+  color: #718096;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-bottom: 3px solid transparent;
+}
+
+.aba-btn:hover {
+  color: #667eea;
+}
+
+.aba-btn.active {
+  color: #667eea;
+  border-bottom-color: #667eea;
+  background: rgba(102, 126, 234, 0.1);
+}
+
+/* Conteúdo das abas */
+.aba-conteudo {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Aba Sobre */
+.info-card {
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.info-card:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.info-card h3 {
+  color: #2d3748;
+  margin-bottom: 1.5rem;
+  font-size: 1.3rem;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.info-item strong {
+  color: #4a5568;
+  font-size: 0.9rem;
+}
+
+.info-item span {
+  color: #2d3748;
+  font-weight: 500;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+}
+
+.stat-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: #f7fafc;
+  border-radius: 8px;
+}
+
+.stat-card svg {
+  color: #667eea;
+}
+
+.stat-card strong {
+  display: block;
+  font-size: 1.2rem;
+  color: #2d3748;
+}
+
+.stat-card span {
+  color: #718096;
+  font-size: 0.9rem;
+}
+
+/* Abas de conteúdo */
+.aba-momentos,
+.aba-album,
+.aba-musicas,
+.aba-cartas,
+.aba-jogos,
+.aba-configuracoes {
+  max-width: 800px;
+}
+
+.momento-item,
+.musica-item,
+.carta-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.momento-content {
+  flex: 1;
+}
+
+.momento-content h4 {
+  color: #2d3748;
+  margin-bottom: 0.5rem;
+}
+
+.momento-content p {
+  color: #718096;
+  margin-bottom: 0.5rem;
+}
+
+.momento-date {
+  color: #a0aec0;
+  font-size: 0.9rem;
+}
+
+.fotos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1rem;
+}
+
+.foto-item img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.musica-info,
+.carta-info {
+  flex: 1;
+}
+
+.musica-info strong,
+.carta-info strong {
+  display: block;
+  color: #2d3748;
+}
+
+.musica-info span,
+.carta-info span {
+  color: #718096;
+  font-size: 0.9rem;
+}
+
+.musica-duracao,
+.carta-status {
+  color: #a0aec0;
+  font-size: 0.9rem;
+}
+
+.jogos-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.jogo-stat {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: #f7fafc;
+  border-radius: 8px;
+}
+
+.jogo-stat strong {
+  color: #2d3748;
+}
+
+.jogo-stat span {
+  color: #718096;
+}
+
+/* Configurações */
+.config-section {
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.config-section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.config-section h4 {
+  color: #2d3748;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.config-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 400px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  color: #4a5568;
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 0.75rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.config-options {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.checkbox-label input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+}
+
+.config-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.btn-danger {
+  background: #e53e3e;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.btn-danger:hover {
+  background: #c53030;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .perfil-info {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .perfil-stats {
+    justify-content: center;
+  }
+  
+  .abas-navegacao {
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+  }
+  
+  .aba-btn {
+    white-space: nowrap;
+    padding: 0.75rem 1rem;
+  }
+  
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .config-actions {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,141 @@
+:root {
+  --nav-bg: #ffffff;
+  --nav-border: #e2e8f0;
+  --nav-text: #4a5568;
+  --nav-text-hover: #2d3748;
+  --nav-active-bg: #f7fafc;
+  --nav-active-text: #667eea;
+  --nav-active-border: #667eea;
+  --nav-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Navigation Container */
+.navigation {
+  background: var(--nav-bg);
+  border-bottom: 1px solid var(--nav-border);
+  padding: 0.5rem 0;
+  box-shadow: var(--nav-shadow);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+/* Nav Items */
+.nav-items {
+  display: flex;
+  gap: 0.25rem;
+  overflow-x: auto;
+  padding: 0.5rem;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.75rem 1rem;
+  text-decoration: none;
+  color: var(--nav-text);
+  border-radius: 8px;
+  min-width: 80px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.nav-item:hover {
+  background: var(--nav-active-bg);
+  color: var(--nav-text-hover);
+}
+
+.nav-item.active {
+  background: var(--nav-active-bg);
+  color: var(--nav-active-text);
+  font-weight: 600;
+}
+
+.nav-item.active::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 3px;
+  background: var(--nav-active-border);
+  border-radius: 2px;
+}
+
+.nav-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+}
+
+.nav-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+/* Hide logo and footer for horizontal nav */
+.nav-logo,
+.nav-footer {
+  display: none;
+}
+
+/* Scrollbar for mobile */
+.nav-items::-webkit-scrollbar {
+  height: 4px;
+}
+
+.nav-items::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.nav-items::-webkit-scrollbar-thumb {
+  background: var(--nav-border);
+  border-radius: 2px;
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .nav-items {
+    gap: 0.5rem;
+  }
+  
+  .nav-item {
+    min-width: 100px;
+    flex-direction: row;
+    gap: 0.5rem;
+  }
+  
+  .nav-label {
+    font-size: 0.9rem;
+  }
+}
+
+/* Remove all fixed positioning and complex layouts */
+.navigation {
+  position: relative;
+  height: auto;
+}
+
+.app-layout {
+  display: block;
+}
+
+.main-content {
+  margin-left: 0;
+  padding: 1rem;
+}
