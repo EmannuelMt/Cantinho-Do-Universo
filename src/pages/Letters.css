@@ -1,0 +1,66 @@
+.letters-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.letter-item {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 20px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.letter-item h3 {
+  color: #FFD700;
+  margin-bottom: 5px;
+}
+
+.letter-date {
+  color: #aaa;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+
+.letter-excerpt {
+  margin-bottom: 15px;
+}
+
+.create-letter {
+  text-align: center;
+}
+
+.letter-form {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 20px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.letter-form h3 {
+  color: #FFD700;
+  margin-bottom: 15px;
+}
+
+.letter-form input, .letter-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: none;
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+}
+
+.form-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.form-actions button:last-child {
+  background: #666;
+}
